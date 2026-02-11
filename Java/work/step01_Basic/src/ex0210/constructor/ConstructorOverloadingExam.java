@@ -34,6 +34,8 @@ class Puppy3{
 		"puplic Puppy3()호출되었습니다"출력
 	*/	
 	public Puppy3(String s, String s2){//"Java","Hi"
+		//String ss="";
+		//The Java feature 'Flexible Constructor Bodies' is only available with source level 25 and above
 		this( s+s2 );//문자열 하나 받는 생성자를 호출Constructor call must be the first statement in a constructor	
 		
         System.out.println("puplic Puppy3(String s, String s2)호출되었습니다");
