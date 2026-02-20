@@ -3,14 +3,14 @@ package com.ws03.dto;
  *  고객의 정보를 관리할 객체 
  * */
 public class UserDto {
-   private int userSeq; // setUserSeq, getUserSeq -> PK
+   private int userSeq; // setUserSeq, getUserSeq
    private String name;
    private String email;
    private String phone;
+   
    private boolean sleep;//기본값 false -> private인 경우는 sleep이름으로 한다. 
    
- 
-public  UserDto() {}
+   public  UserDto() {}
    public UserDto(int userSeq, String name, String email, String phone, boolean sleep) {
 	this.userSeq = userSeq;
 	this.name = name;
@@ -18,6 +18,7 @@ public  UserDto() {}
 	this.phone = phone;
 	this.sleep = sleep;
   }
+   
 	public int getUserSeq() {
 		return userSeq;
 	}
@@ -43,12 +44,28 @@ public  UserDto() {}
 		this.phone = phone;
 	}
 	
-	public boolean isSleep() {// boolean형인경우는 getSleep아니다. 
+	public boolean isSleep() {
 		return sleep;
 	}
 	public void setSleep(boolean sleep) {
 		this.sleep = sleep;
 	}
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("UserDto [userSeq=");
+		builder.append(userSeq);
+		builder.append(", name=");
+		builder.append(name);
+		builder.append(", email=");
+		builder.append(email);
+		builder.append(", phone=");
+		builder.append(phone);
+		builder.append(", sleep=");
+		builder.append(sleep);
+		builder.append("]");
+		return builder.toString();
+	}
 	
-
+	
 }

@@ -50,5 +50,25 @@ public  UserDto() {}
 		this.sleep = sleep;
 	}
 	
+	
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("UserDto [userSeq=");
+		builder.append(userSeq);
+		builder.append(", name=");
+		builder.append(name);
+		builder.append(", email=");
+		builder.append(email);
+		builder.append(", phone=");
+		builder.append(phone);
+		builder.append(", sleep=");
+		builder.append(sleep);
+		builder.append("]");
+		return builder.toString();
+	}
+	
+	
+	
 
 }

@@ -1,5 +1,7 @@
 package com.ws03.view;
 
+import java.util.List;
+
 import com.ws03.dto.AccountDto;
 import com.ws03.dto.UserDto;
 import com.ws03.service.BankService;
@@ -10,12 +12,12 @@ public class TestView {
 		System.out.println("***1. 고객 seq 100 에 해당하는 계좌정보 검색하기 *****");
 		BankService service = new BankService();
 		
-        AccountDto[] accountList = service.getAccountList(100);
+        List<AccountDto> accountList = service.getAccountList(100);
 		
-		if(accountList==null) {
+		if(accountList.size()==0) {
 			System.out.println("회원의 계좌정보가 없습니다. ");
 		}else {
-			System.out.println("회원계좌개수 : " + accountList.length);
+			System.out.println("회원계좌개수 : " + accountList.size());
 			for(AccountDto dto : accountList) {
 				System.out.println(dto.getAccountSeq() +" , " 
 			+ dto.getAccountNumber()+" , " + dto.getUserSeq());
