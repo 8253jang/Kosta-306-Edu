@@ -80,7 +80,7 @@ class Bank{
  * 입금 or 출금 을 하게된 스레드 객체
  * */
 class CustomerThread extends Thread{
-	Bank bank ;
+	Bank bank  ;
 	boolean state;
 	CustomerThread(Bank bank, String name, boolean state){
 		super(name);
