@@ -17,31 +17,39 @@ public class MatchStreamExam02 {
 		
 		//1. allMatch - 모든학생의 점수가 80이상인지 ?
 		System.out.println("1. allMatch - 모든학생의 점수가 80이상인지 ?");
-		
-		
+		boolean re = list.stream().allMatch((s)->s.getScore()>=80);
+		System.out.println("re = "+ re);
 		
 		//2. anyMatch - 학생중에 80이상이 한명이라도 있는지?
 		System.out.println("2. anyMatch - 학생중에 80이상이 한명이라도 있는지?");
-		
+		re = list.stream().anyMatch((s)->s.getScore()>=80);
+		System.out.println("re = "+ re);
 		
 		
 		//3 . noneMatch - 80이상이 아무도 없니?
 		System.out.println("3 . noneMatch - 80이상이 아무도 없니?");
-		
+		re = list.stream().noneMatch((s)->s.getScore()>=80);
+		System.out.println("re = "+ re);
 		
 		//4. max() - 가장 많은 나이
 		System.out.println("4. max() - 가장 많은 나이는?");
+		Student st = list.stream()
+		.max((s1,s2)-> s1.getAge() - s2.getAge())
+		.orElse(null);
+		
+		System.out.println(st);
 		
 		
 		System.out.println("----------------------");
 		int arr []= new int [] {1,3,5,6,8};
 		
 		System.out.println("5. max() - 최대값?");
-		
-		
+		int max = Arrays.stream(arr).max().getAsInt();
+		System.out.println("max = " + max);
 		
 		System.out.println("6. min() - 최소값?");
-		
+		int min = Arrays.stream(arr).min().getAsInt();
+		System.out.println("min = " + min);
 	
 		
 		

@@ -16,7 +16,7 @@ public class ParalleStramExam01 {
 		    } 
 		} 
 		
-		
+
 		System.out.println("--Stream을 이용한 처리 -----------");
 		//names.stream() 
 		names.parallelStream()

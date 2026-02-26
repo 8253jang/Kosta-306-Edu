@@ -21,13 +21,19 @@ public class InstanceMethodReference02 {
 		};
 		
 		//1. 람다식으로 변경해보자
-		 
+		Function<String, Integer> lamdaLength = (str)->utils.getLength(str);
 		
 		//2.인스턴스 메소드 참조로 변경해보자.
-		 
+		Function<String, Integer> instanceLength = utils :: getLength;
+
       
  
         //3. 호출해보자
+		System.out.println(beforeLength.apply("Hello"));
+		System.out.println(lamdaLength.apply("Hello"));
+		System.out.println(instanceLength.apply("Hello"));
+	
+		
     } 
 } 
 

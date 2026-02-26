@@ -5,13 +5,15 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.function.ToDoubleFunction;
 
 
 public class Test00 {
 
 	public static void main(String[] args) {
 		List<Student> students = Arrays.asList( 
-                new Student("희정", 22, 88.5, "Computer Science"), 
+                 new Student("희정", 22, 88.5, "Computer Science"), 
                  new Student("가현", 24, 76.2, "Mathematics"), 
                  new Student("찬범", 23, 92.3, "Computer Science"), 
                  new Student("현솔", 25, 81.7, "Physics") 
@@ -49,15 +51,30 @@ public class Test00 {
 		}
 		
 		////////////////////////////////////////////////////////
-		
+		System.out.println("=============");
 	   //2.Stream이용방식으로 해보자
-		students.stream()
-		.filter((s)->s.getScore() >=80)
-		//.sorted(Comparator.comparingDouble(s->s.getScore()))
-		.sorted(Comparator.comparingDouble(Student :: getScore))
-		.map(null)
-		.toList();
+	/*List<Student>	finalList = students
+		.stream()
+		.filter(new Predicate<Student>() {
+			@Override
+			public boolean test(Student t) {
+				System.out.println(1);
+				return t.getScore() >=80;
+			}
+		}).toList();*/
+		
+		
+		List<String>	finalList = students
+				.stream()
+				.filter((s)-> s.getScore() >=80)
+				//.sorted(Comparator.comparingDouble((s)-> s.getScore()))
+				.sorted(Comparator.comparingDouble(Student :: getScore))
+				//.map((s)->s.getName())
+				.map(Student :: getName)
+				.toList();
 	
+	    System.out.println("개수 = "+ finalList.size());
+	    System.out.println(finalList);
 	}
 
 }

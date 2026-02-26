@@ -32,6 +32,7 @@ class Student {
  
  @Override 
  public String toString() { 
-  return name + " (" + score + ")"; 
+  //return name + " (" + score + ")"; 
+	 return name+" | " + age +" | "+ score;
  } 
 }
