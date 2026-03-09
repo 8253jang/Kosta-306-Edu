@@ -25,8 +25,9 @@ public class EmpView {
 		
 		
 		System.out.println("\n--사원번호 검색 ---");
-		Emp emp =  dao.selectByEmp(9000);
+		Emp emp =  dao.selectByEmp(9999);
 	    System.out.println("결과 = " + emp);
+	    
 	    
 	    System.out.println("\n--사원번호로 삭제 ---");
 	    int re = dao.deleteByEmpno(9000);

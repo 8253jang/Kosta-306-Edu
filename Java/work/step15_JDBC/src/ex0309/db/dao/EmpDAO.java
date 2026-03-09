@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -101,8 +102,35 @@ public class EmpDAO {
        select empno, ename, sal, hiredate from emp
    */
 	public List<Emp> selectAll(){
-		
-		return null;
+		Connection con =null;
+		PreparedStatement ps = null;
+		ResultSet rs=null;
+		String sql="select empno, ename, sal, hiredate from emp order by sal desc";
+		List<Emp> list = new ArrayList<Emp>();
+		try {
+			//로드 연결 실행 닫기 
+			con = DbManager.getConnection();
+			ps = con.prepareStatement(sql);
+			//?가 있다면 ?의 순서대로 개수만큼 setXxx 필요
+			
+			rs = ps.executeQuery();
+			while(rs.next()) {//커서를 앞으로 이동시킨다.
+				
+				//열을 조회한다.
+				int empno = rs.getInt("empno");
+				String ename = rs.getString("ename");
+				int sal = rs.getInt("sal");
+				String hiredate = rs.getString("hiredate");
+				
+				Emp emp = new Emp(empno, ename, sal, hiredate);
+			    list.add(emp);
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DbManager.dbClose(con, ps, rs);
+		}
+		return list;
 	}
 	
 	
@@ -110,9 +138,34 @@ public class EmpDAO {
 	 * 사원번호에 해당하는 사원정보 검색하기
 	 * select empno, ename, sal, hiredate from emp where empno=?
 	 * */
-	public Emp selectByEmp(int empno) {
-		
-		return null;
+	public Emp selectByEmp(int empno) {//9000
+		Connection con =null;
+		PreparedStatement ps = null;
+		ResultSet rs=null;
+		String sql="select empno, ename, sal, hiredate from emp where empno=?";
+		Emp emp=null;
+		try {
+			//로드 연결 실행 닫기 
+			con = DbManager.getConnection();
+			ps = con.prepareStatement(sql);
+			
+			//?에 값 전달
+			ps.setInt(1, empno);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				 empno = rs.getInt("empno");
+				String ename = rs.getString("ename");
+				int sal = rs.getInt("sal");
+				String hiredate = rs.getString("hiredate");
+				
+				emp = new Emp(empno, ename, sal, hiredate);
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DbManager.dbClose(con, ps, rs);
+		}
+		return emp;
 	}
 	
 	
@@ -121,8 +174,25 @@ public class EmpDAO {
 	 * delete from emp where empno=?
 	 * */
 	 public int deleteByEmpno(int empno) {
-		 
-		 return 0;
+		 Connection con=null;
+		PreparedStatement ps =null;
+		int result=0;
+		String sql="delete from emp where empno=?";
+		try {
+			con = DbManager.getConnection();
+			ps = con.prepareStatement(sql);
+			
+			//?의 순서대로 개수만큼   setXxx( ?순서,  값 ) 필요하다
+			ps.setInt(1, empno);
+			
+			result = ps.executeUpdate();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DbManager.dbClose(con, ps);
+		}
+		return result;
 	 }
 	
 	
