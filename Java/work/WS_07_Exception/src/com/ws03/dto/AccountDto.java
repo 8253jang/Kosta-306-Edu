@@ -8,7 +8,7 @@ public class AccountDto  implements Comparable<AccountDto>{
    private String accountNumber;
    private int balance;
    
-   private int userSeq;
+   private int userSeq; //fk
    
    public AccountDto() {}
    public AccountDto(int accountSeq, String accountNumber, int balance, int userSeq) {
