@@ -55,7 +55,7 @@ public class TransactionDAO {
 			}catch (Exception e) {
 				e.printStackTrace();
 			}
-			 DbManager.dbClose(con, null);
+			 DbManager.dbClose(con,null);
 		}	
 	}
 	

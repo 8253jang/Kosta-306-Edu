@@ -6,7 +6,7 @@ package db.util;
 public interface DbProperties {
 	
 	   public static final String DRIVER_NAME="com.mysql.cj.jdbc.Driver";
-	   String URL="jdbc:mysql://localhost:3306/mytest";
+	   String URL="jdbc:mysql://localhost:3306/ex0227";
 	   String USER_ID="jang";
 	   String USER_PASS="1234";
 	   
@@ -16,11 +16,6 @@ public interface DbProperties {
 //    String USER_ID = "c##exam";
 //    String USER_PASS = "1234";
 	
-	   
-	/////AWS Connection//////////////   
-//	public static final String DRIVER_NAME="com.mysql.cj.jdbc.Driver";
-//	  String URL="jdbc:mysql://localhost:3306/ex0821?serverTimezone=Asia/Seoul";
-//	  String USER_ID="jang";
-//	  String USER_PASS="1234";
+
 		  
 }

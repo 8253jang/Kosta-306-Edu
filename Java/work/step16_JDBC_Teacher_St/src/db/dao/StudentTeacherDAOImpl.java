@@ -23,7 +23,7 @@ public class StudentTeacherDAOImpl implements StudentTeacherDAO {
 		Connection con=null;
 		PreparedStatement ps=null;
 		ResultSet rs=null;
-		List<Student> list =new ArrayList<Student>();
+		List<Student> list = new ArrayList<Student>();
 		String sql="select * from student where  수_주민등록번호 like '%-2%'";
 		try {
 			con = DbManager.getConnection();
@@ -57,8 +57,6 @@ public class StudentTeacherDAOImpl implements StudentTeacherDAO {
 		PreparedStatement ps=null;
 		ResultSet rs=null;
 		List<Teacher> list = new ArrayList<Teacher>();
-		
-		
 		String sql="select * from teacher  where 주소 like ? " ;
 		try {
 			con = DbManager.getConnection();
@@ -66,7 +64,6 @@ public class StudentTeacherDAOImpl implements StudentTeacherDAO {
 			
 			//?가 있다면 setXxx() 필요하다
 			ps.setString(1, "%"+gu+"%"); //주소 like ? 인경우 
-			
 			
 			rs = ps.executeQuery();
 			while(rs.next()) {

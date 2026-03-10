@@ -35,3 +35,5 @@ public interface StudentTeacherDAO {
 	 * */
 	public Teacher getTeacherInfoByNo(int teacherNo);
 }
+
+
